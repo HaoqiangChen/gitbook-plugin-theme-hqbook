@@ -61,6 +61,24 @@ require(['gitbook', 'jquery'], function (gitbook, $) {
     $search.focus();
     $("#searchBtn").click(function (e) {
     });
+	
+	// 返回顶部按钮
+    var $bookTotop = ['<div class="book-toTop"><i class="fa fa-arrow-up"></i></div>'].join("");
+    $(".book").append($bookTotop)
+    $(".book-toTop").hide();
+    $('.book-body,.body-inner').on('scroll', function () {
+      if ($(this).scrollTop() > 100) {
+        $('.book-toTop').fadeIn();
+      } else {
+        $('.book-toTop').fadeOut();
+      }
+    });
+    $('.book-toTop').click(function () {
+      $('.book-body,.body-inner').animate({
+        scrollTop: 0
+      }, 800);
+      return false;
+    });
 
     // 隐藏元素, 比如去掉gitbook-link
     $.map(opts, function (ele) {
