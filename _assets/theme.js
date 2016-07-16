@@ -11,7 +11,7 @@ require(['gitbook', 'jquery'], function (gitbook, $) {
       return window.location.protocol + '//' + window.location.host + '/' + webName;
     }
   }
-  
+
   // 生成内容导航
   function generateSectionNavigator() {
     $(".page-inner .markdown-section").find("h1,h2,h3").each(function () {
@@ -42,6 +42,7 @@ require(['gitbook', 'jquery'], function (gitbook, $) {
       hash = hash.substring(1);
       $("#an_" + hash).addClass("selected");
     }
+
   }
 
   // 基础设置
@@ -61,8 +62,8 @@ require(['gitbook', 'jquery'], function (gitbook, $) {
     $search.focus();
     $("#searchBtn").click(function (e) {
     });
-	
-	// 返回顶部按钮
+
+    // 返回顶部按钮
     var $bookTotop = ['<div class="book-toTop"><i class="fa fa-arrow-up"></i></div>'].join("");
     $(".book").append($bookTotop)
     $(".book-toTop").hide();
@@ -92,6 +93,6 @@ require(['gitbook', 'jquery'], function (gitbook, $) {
 
   gitbook.events.on('page.change', function () {
     setBase();
-	generateSectionNavigator();
+    generateSectionNavigator();
   });
 });
