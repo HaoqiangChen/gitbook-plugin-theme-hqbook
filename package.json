@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-theme-hqbook",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Gitbook theme for hqbook",
   "main": "index.js",
   "engines": {
@@ -13,8 +13,8 @@
   },
   "keywords": [
     "gitbook",
-    "hqbook",
-    "theme"
+    "theme-hqbook",
+    "prism"
   ],
   "author": "chenhaoqiang",
   "license": "MIT",

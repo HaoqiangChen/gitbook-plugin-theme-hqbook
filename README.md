@@ -71,6 +71,25 @@ $ npm i -D gitbook-plugin-theme-hqbook
 ### nav
 顶部导航栏，nav为数组，将需要的导航添加到变量`themeHqbook`中
 
+### 代码高亮
+
+新增几个代码高亮样式，配合`prism`插件使用
+* prism-atom-dark.css
+* prism-ghcolors.css
+* prism-vs.css
+* prism-xonokai.css
+```json5
+{
+    "pluginsConfig": {
+        "prism": {
+          "css": [
+            "gitbook-plugin-theme-hqbook/_themes/prism-xonokai.css"
+          ]
+        },
+    }
+}
+```
+
 ## 推荐和以下插件配合使用
 
 ```
@@ -92,6 +111,10 @@ plugins: [
 
 ## 更新内容
 
+### version 1.0.4 (2016-07-18T18:54:38)
+
+* fix: 新增几个代码高亮样式，配合`prism`插件使用
+
 ### version 1.0.3 (2016-07-16T17:54:38)
 
 * fix: 修改默认滚动条样式
@@ -108,11 +131,13 @@ plugins: [
 
 * 创建和发布自开发Gitbook主题 theme-hqbook
 
-## Keywords
+## Links
 
 [hqbook](https://github.com/HaoqiangChen/hqbook)
 [gitbook](http://gitbook.com/)
 [theme](https://github.com/HaoqiangChen/gitbook-plugin-theme-hqbook)
+[prism](https://github.com/gaearon/gitbook-plugin-prism)
+[Syntax Highlighting](https://atelierbram.github.io/syntax-highlighting/prism/demo/)
 
 ## License
 
