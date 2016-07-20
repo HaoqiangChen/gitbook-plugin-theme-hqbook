@@ -48,6 +48,8 @@ $ npm i -D gitbook-plugin-theme-hqbook
             "favicon": "./favicon.ico",
             "logo":"./logo.png",
             "search-placeholder":"输入关键字搜索",
+			"copyButtons": true,
+			"copyLines": true,
             "hide-elements": [
                 ".summary .gitbook-link"
             ]
@@ -64,6 +66,12 @@ $ npm i -D gitbook-plugin-theme-hqbook
 
 ### search-placeholder
 搜索框提示信息
+
+### copyButtons
+代码块添加复制按钮
+
+### copyLines
+当显示多行代码时，将添加行号
 
 ### hide-elements
 隐藏元素，比如导航栏中Published by GitBook
@@ -99,7 +107,6 @@ plugins: [
     "-search",
     "theme-hqbook",
     "chapter-fold",
-    "code",
     "flexible-alerts",
     "lightbox",
     "prism",
@@ -110,6 +117,10 @@ plugins: [
 ```
 
 ## 更新内容
+
+### version 1.0.6 (2016-07-20T16:54:38)
+
+* fix: 新增代码添加行号&复制按钮
 
 ### version 1.0.5 (2016-07-18T19:19:38)
 

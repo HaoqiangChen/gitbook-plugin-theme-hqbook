@@ -6,6 +6,20 @@
   "engines": {
     "gitbook": ">=3.0.0"
   },
+  "gitbook": {
+    "properties": {
+      "copyButtons": {
+        "default": true,
+        "title": "Adds buttons to copy the commands",
+        "type": "boolean"
+      },
+      "copyLines": {
+        "default": true,
+        "title": "When displaying code with multiple lines, line numbers will be added",
+        "type": "boolean"
+      }
+    }
+  },
   "scripts": {},
   "repository": {
     "type": "git",
