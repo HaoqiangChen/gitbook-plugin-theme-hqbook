@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-theme-hqbook",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "A Gitbook theme for hqbook",
   "main": "index.js",
   "engines": {
@@ -16,6 +16,11 @@
       "copyLines": {
         "default": true,
         "title": "When displaying code with multiple lines, line numbers will be added",
+        "type": "boolean"
+      },
+      "dragSplitter": {
+        "default": true,
+        "title": "Add a drag-and-drop bar to adjust the width on both sides",
         "type": "boolean"
       }
     }

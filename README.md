@@ -50,6 +50,7 @@ $ npm i -D gitbook-plugin-theme-hqbook
             "search-placeholder":"输入关键字搜索",
 			"copyButtons": true,
 			"copyLines": true,
+			"dragSplitter": true,
             "hide-elements": [
                 ".summary .gitbook-link"
             ]
@@ -72,6 +73,9 @@ $ npm i -D gitbook-plugin-theme-hqbook
 
 ### copyLines
 当显示多行代码时，将添加行号
+
+### dragSplitter
+在左侧目录和右侧内容之间添加一个可以拖拽的栏，用来调整两边的宽度
 
 ### hide-elements
 隐藏元素，比如导航栏中Published by GitBook
@@ -110,13 +114,16 @@ plugins: [
     "flexible-alerts",
     "lightbox",
     "prism",
-    "splitter",
     "search-pro"
     //...
 ]
 ```
 
 ## 更新内容
+
+### version 1.0.7 (2016-07-21T16:54:38)
+
+* fix: 新增在左侧目录和右侧内容之间添加一个可以拖拽的栏，用来调整两边的宽度
 
 ### version 1.0.6 (2016-07-20T16:54:38)
 

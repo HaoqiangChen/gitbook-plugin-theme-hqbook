@@ -332,23 +332,54 @@ body {
     width: 1em;
 }
 
+/*可拖拽的栏*/
+.divider-content-summary {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 5px;
+    display: table;
+    cursor: col-resize;
+    color: #ccc;
+    -webkit-transition: color 350ms ease;
+    -moz-transition: color 350ms ease;
+    -o-transition: color 350ms ease;
+    transition: color 350ms ease
+}
+
+.divider-content-summary:hover {
+    color: #444;
+}
+
+.divider-content-summary__icon {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
 @media screen and (max-width: 1440px) {
     .header-inner {
         padding: 5px 30px;
         height: 60px;
     }
+
     .header-inner .logo img {
         max-height: 50px;
     }
+
     .header-inner .title {
         line-height: 50px;
     }
+
     .header-inner #book-search-input {
         margin: 5px 0;
     }
+
     .book-summary, .book-body {
         top: 60px;
     }
+
     .book-anchor {
         top: 110px;
         height: 80%;
