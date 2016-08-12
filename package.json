@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-theme-hqbook",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Gitbook theme for hqbook",
   "main": "index.js",
   "engines": {
@@ -8,6 +8,21 @@
   },
   "gitbook": {
     "properties": {
+      "favicon": {
+        "default": "./favicon.ico",
+        "title": "Add path to your site favicon in favicon",
+        "type": "string"
+      },
+      "logo": {
+        "default": "../../images/home/logo.png",
+        "title": "Insert the logo into the top of the navigation bar",
+        "type": "string"
+      },
+      "search-placeholder": {
+        "default": "输入关键字搜索",
+        "title": "The placeholder of search box",
+        "type": "string"
+      },
       "copyButtons": {
         "default": true,
         "title": "Adds buttons to copy the commands",
@@ -22,6 +37,17 @@
         "default": true,
         "title": "Add a drag-and-drop bar to adjust the width on both sides",
         "type": "boolean"
+      },
+      "flexible-linkcard": {
+        "type": "object",
+        "title": "Converts blockquotes into beautiful linkcard, custom nice links",
+        "default": {
+          "title": "Converts blockquotes into beautiful linkcard, custom nice links",
+          "target": "_blank",
+          "hrefUrl": "../../demo/demo.html",
+          "imgSrc": "../../images/home/logo.png",
+          "imgClass": ""
+        }
       }
     }
   },

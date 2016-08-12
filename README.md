@@ -1,6 +1,6 @@
 # DIY A Gitbook theme for hqbook
 
-![Image](./_assets/preview.png)
+![Image](https://github.com/HaoqiangChen/gitbook-plugin-theme-hqbook/raw/master/_assets/preview.png)
 
 ## 使用方法
 
@@ -53,7 +53,14 @@ $ npm i -D gitbook-plugin-theme-hqbook
 			"dragSplitter": true,
             "hide-elements": [
                 ".summary .gitbook-link"
-            ]
+            ],
+            "flexible-linkcard": {
+                "title": "flexible-linkcard",
+                "hrefUrl": "https://github.com/HaoqiangChen/gitbook-plugin-flexible-linkcard",
+                "target": "_blank",
+                "imgSrc": "./book/logo.png",
+                "imgClass": "rect"
+            }
         }
     }
 }
@@ -82,6 +89,16 @@ $ npm i -D gitbook-plugin-theme-hqbook
 
 ### nav
 顶部导航栏，nav为数组，将需要的导航添加到变量`themeHqbook`中
+
+### flexible-linkcard
+
+* `title` : 定义`flexible-linkcard`的默认标题
+* `hrefUrl` : 定义`flexible-linkcard`的默认网址
+* `target` : 定义`flexible-linkcard`的网址默认打开方式，即HTML`<a>`的target属性，属性值有`_seft`, `_blank`, `_parent`, `_top`几种，最好还是设置`_blank`新窗口打开
+* `imgSrc` : 定义`flexible-linkcard`的默认显示图片
+* `imgClass` : 定义`flexible-linkcard`的默认图片样式
+
+![flexible-linkcard](https://github.com/HaoqiangChen/gitbook-plugin-theme-hqbook/raw/master/_asets/flexible-linkcard.png)
 
 ### 代码高亮
 
@@ -121,6 +138,10 @@ plugins: [
 
 ## 更新内容
 
+### version 1.0.8 (2016-08-13T00:21:38)
+
+* fix: 新增`flexible-linkcard`插件，以特定语法美化`<a>`链接，制成漂亮的链接卡片
+
 ### version 1.0.7 (2016-07-21T16:54:38)
 
 * fix: 新增在左侧目录和右侧内容之间添加一个可以拖拽的栏，用来调整两边的宽度
@@ -158,6 +179,7 @@ plugins: [
 [hqbook](https://github.com/HaoqiangChen/hqbook)
 [gitbook](http://gitbook.com/)
 [theme](https://github.com/HaoqiangChen/gitbook-plugin-theme-hqbook)
+[flexible-linkcard](https://github.com/HaoqiangChen/gitbook-plugin-flexible-linkcard)
 [prism](https://github.com/gaearon/gitbook-plugin-prism)
 [Syntax Highlighting](https://atelierbram.github.io/syntax-highlighting/prism/demo/)
 

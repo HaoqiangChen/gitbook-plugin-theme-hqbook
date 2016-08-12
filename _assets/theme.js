@@ -1,9 +1,9 @@
 require(['gitbook', 'jQuery'], function (gitbook, $) {
 
-  const TERMINAL_HOOK = '**[terminal]'
+  var TERMINAL_HOOK = '**[terminal]'
 
   var pluginConfig = {}; // 该插件配置
-  var opts; // 配置的 隐藏元素 数组
+  var hideElementList; // 配置的 隐藏元素 数组
   var timeouts = {};
 
   function getRootPath() {
@@ -86,14 +86,12 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
     });
 
     // 隐藏元素, 比如去掉gitbook-link
-    $.map(opts, function (ele) {
+    $.map(hideElementList, function (ele) {
       $(ele).hide();
     });
   }
 
-  /**
-   * 代码添加行号&复制按钮
-   */
+  // 代码添加行号&复制按钮
   function addCopyButton(wrapper) {
     wrapper.append(
       $('<i class="fa fa-clone t-copy"></i>')
@@ -130,7 +128,9 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
 
     if (pluginConfig.copyLines && lines.length > 1) {
       // console.log(lines);
-      lines = lines.map(line => '<span class="code-line">' + line + '</span>');
+      lines = lines.map(function (line) {
+		return '<span class="code-line">' + line + '</span>';
+	  });
       // console.log(lines);
       code.html(lines.join('\n'));
     }
@@ -153,9 +153,7 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
     }, 1000);
   }
 
-  /**
-   * 在左侧目录和右侧内容之间添加一个可以拖拽的栏，用来调整两边的宽度
-   */
+  // 在左侧目录和右侧内容之间添加一个可以拖拽的栏，用来调整两边的宽度
   function setSplitter() {
     var KEY_SPLIT_STATE = 'plugin_gitbook_split';
 
@@ -188,7 +186,7 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
       splitState.bookBodyOffset
     );
 
-    setTimeout(function() {
+    setTimeout(function () {
       var isGreaterThanEqualGitbookV2_5 = !Boolean($('.toggle-summary').length);
 
       var $toggleSummary = isGreaterThanEqualGitbookV2_5
@@ -196,17 +194,17 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
 
       $toggleSummary.on('click', function () {
 
-        var summaryOffset  = null;
+        var summaryOffset = null;
         var bookBodyOffset = null;
 
         var isOpen = isGreaterThanEqualGitbookV2_5
           ? !gitbook.sidebar.isOpen() : $book.hasClass('with-summary');
 
         if (isOpen) {
-          summaryOffset  = -($summary.outerWidth());
+          summaryOffset = -($summary.outerWidth());
           bookBodyOffset = 0;
         } else {
-          summaryOffset  = 0;
+          summaryOffset = 0;
           bookBodyOffset = $summary.outerWidth();
         }
 
@@ -238,7 +236,7 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
       event.stopPropagation();
       event.preventDefault();
       $summary.outerWidth(event.pageX + grabPointWidth);
-      $bookBody.offset({ left: event.pageX + grabPointWidth });
+      $bookBody.offset({left: event.pageX + grabPointWidth});
     });
 
     function getSplitState() {
@@ -260,19 +258,65 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
 
     function setSplitState(summaryWidth, summaryOffset, bookBodyOffset) {
       $summary.outerWidth(summaryWidth);
-      $summary.offset({ left: summaryOffset });
-      $bookBody.offset({ left: bookBodyOffset });
+      $summary.offset({left: summaryOffset});
+      $bookBody.offset({left: bookBodyOffset});
       // improved broken layout in windows chrome.
       //   "$(x).offset" automatically add to "position:relative".
       //   but it cause layout broken..
-      $summary.css({ position: 'absolute' });
-      $bookBody.css({ position: 'absolute' });
+      $summary.css({position: 'absolute'});
+      $bookBody.css({position: 'absolute'});
     }
+  }
+
+  function formatLinkcard() {
+    var linkcardConfig = pluginConfig["flexible-linkcard"];
+    
+    $('blockquote').each(function () {
+      var origin = $(this).html();
+      var content = origin.replace(/@\[([\s\S]*)\]\{<code>(\S*)<\/code>[ "]*(\w*)"?\}\n?([\s\S]*)(?=<\/p>)/g, function (match, title, url, target, img) {
+        if (!match) {
+          return origin;
+        }
+
+        var reg = /^<code>(\S*)<\/code>[ "]*(\w*)"?/;
+        var IMG;
+        if (img) {
+          IMG = img.match(reg);
+          if (!IMG) {
+            return origin;
+          }
+        }
+
+        var hrefUrl = url ? url : linkcardConfig["hrefUrl"];
+        var imgSrc = (IMG && IMG[1]) ? IMG[1] : linkcardConfig["imgSrc"];
+        var imgClass = (IMG && IMG[2]) ? IMG[2]  : linkcardConfig["imgClass"];
+
+        return (
+          '<div class="linkcard">' +
+            '<div class="linkcard-backdrop" style="background-image:url(' + imgSrc + ')"></div>' +
+            '<a class="linkcard-content" target="' + (target ? target : linkcardConfig["target"]) + '" href="' + hrefUrl + '">' +
+              '<div class="linkcard-text">' +
+                '<p class="linkcard-title">' + (title ? title : linkcardConfig["title"]) + '</p>' +
+                '<p class="linkcard-url"><i class="fa fa-link fa-rotate-90"></i>' + hrefUrl + '</p>' +
+              '</div>' +
+              '<div class="linkcard-imagecell ' + imgClass + '">' +
+                  '<img class="linkcard-image" src="' + imgSrc + '">' +
+              '</div>' +
+            '</a>' +
+          '</div>'
+        );
+      });
+
+      // Do not change blockquotes without linkcard indicator.
+      if (content !== origin) {
+        $(this).replaceWith(content);
+      }
+    });
   }
 
   gitbook.events.on('start', function (e, config) {
     pluginConfig = config['theme-hqbook'];
-    opts = pluginConfig["hide-elements"];
+    hideElementList = pluginConfig["hide-elements"];
 
     if (pluginConfig.copyButtons) {
       addCopyTextarea();
@@ -282,12 +326,13 @@ require(['gitbook', 'jQuery'], function (gitbook, $) {
   gitbook.events.on('page.change', function () {
     setBase();
     generateSectionNavigator();
+    formatLinkcard();
 
     $('pre').each(function () {
       format_code_block($(this));
     });
-	
-	if (pluginConfig.dragSplitter) {
+
+    if (pluginConfig.dragSplitter) {
       setSplitter();
     }
   });
