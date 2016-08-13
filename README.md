@@ -98,7 +98,7 @@ $ npm i -D gitbook-plugin-theme-hqbook
 * `imgSrc` : 定义`flexible-linkcard`的默认显示图片
 * `imgClass` : 定义`flexible-linkcard`的默认图片样式
 
-![flexible-linkcard](https://github.com/HaoqiangChen/gitbook-plugin-theme-hqbook/raw/master/_asets/flexible-linkcard.png)
+![flexible-linkcard](https://github.com/HaoqiangChen/gitbook-plugin-theme-hqbook/raw/master/_assets/flexible-linkcard.png)
 
 ### 代码高亮
 
