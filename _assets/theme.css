@@ -66,13 +66,13 @@ body{font-family:"Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F
 .markdown-section .linkcard .linkcard-backdrop{position:absolute;top:0;left:0;right:0;bottom:0;background-image:url('./logo.png');background-repeat:no-repeat;-webkit-filter:blur(20px);filter:blur(20px);background-size:cover;background-position:50%}
 .markdown-section .linkcard .linkcard-content{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:space-around;padding:12px;background-color:hsla(0,0%,96.5%,.88);box-sizing:border-box}
 .markdown-section .linkcard .linkcard-content,.markdown-section .linkcard .linkcard-content:hover {text-decoration: none;border: none!important;color: inherit!important;}
-.markdown-section .linkcard .linkcard-content .linkcard-text{flex:1}
+.markdown-section .linkcard .linkcard-content .linkcard-text{flex:1;min-width:0}
 .markdown-section .linkcard .linkcard-content .linkcard-text .linkcard-title{overflow:hidden;text-overflow:ellipsis;max-height:40px;font-size:16px;font-weight:500;line-height:1.25;color:#121212;margin-bottom:5px;}
-.markdown-section .linkcard .linkcard-content .linkcard-text .linkcard-url{font-size:13px;color:#999;margin: 0;line-height:1;overflow:hidden;text-overflow:ellipsis;}
-.markdown-section .linkcard .linkcard-content .linkcard-text .linkcard-url .fa.fa-link{margin-right: 5px;}
-.markdown-section .linkcard .linkcard-content .linkcard-imagecell{margin-left:8px;border-radius:6px;width:60px;height:60px;background-color:#ebebeb;background:url('./logo.png') no-repeat center/contain;overflow:hidden}
+.markdown-section .linkcard .linkcard-content .linkcard-text .linkcard-url{font-size:13px;color:#999;margin: 0;line-height:1.3;overflow:hidden;text-overflow:ellipsis;}
+.markdown-section .linkcard .linkcard-content .linkcard-text .linkcard-url .fa.fa-link{float:left;margin-right: 5px}
+.markdown-section .linkcard .linkcard-content .linkcard-imagecell{width:60px;margin-left:8px;border-radius:6px;overflow:hidden}
 .markdown-section .linkcard .linkcard-content .linkcard-imagecell.rect{width:90px}
-.markdown-section .linkcard .linkcard-content .linkcard-imagecell img{width:100%;height:100%;object-fit:cover;margin:0;padding:0;max-width:none;background:none;box-shadow:none;}
+.markdown-section .linkcard .linkcard-content .linkcard-imagecell img{width:100%;height:100%;object-fit:cover;margin:0;padding:0;max-width:none;background:none;border-radius:6px;box-shadow:none}
 /* 15寸笔记本电脑响应式布局 */
 @media screen and (max-width:1440px){.header-inner{padding:5px 30px;height:60px}
     .header-inner .logo img{max-height:50px}

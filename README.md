@@ -138,6 +138,10 @@ plugins: [
 
 ## 更新内容
 
+### version 1.1.0 (2016-08-16T16:36:38)
+
+* fix: `flexible-linkcard`插件样式调整
+
 ### version 1.0.8 (2016-08-13T00:21:38)
 
 * fix: 新增`flexible-linkcard`插件，以特定语法美化`<a>`链接，制成漂亮的链接卡片
